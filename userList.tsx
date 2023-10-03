@@ -64,11 +64,9 @@ export const EditUserList = () => {
 
 // function for creating array of users to update roles
   const previewChanges = useCallback(() => {
-    // userlist data - data with changed roles
+    // userlist data - data with changed roles, data - data from the server.  we compare two values of users' roles
     const newUsersToUpdateRoles = userListData.reduce((accumulator: IUsersToUpdate[], userToUpdate) => {
-      // data - data from the server
       const currentUser = data?.find((currentUser) => currentUser.id === userToUpdate.id);
-      // we compare two values of users' roles
       if (currentUser?.role !== userToUpdate.role) {
         accumulator.push({
           userId: userToUpdate.id,
